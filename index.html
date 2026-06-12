@@ -470,6 +470,80 @@ footer{background:#0C0A06;color:var(--taupe);padding:58px 0 34px;font-family:'Ha
   .kit-media>.tilt{position:absolute;inset:0}
   .kit-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 }
+
+/* ===== MOBILE: overlay hero — headline top, products center, sub+buttons+rating bottom ===== */
+@media(max-width:860px){
+  .hero{
+    aspect-ratio:1024/1536; min-height:0;
+    background:
+      linear-gradient(180deg, rgba(20,12,8,.30) 0%, rgba(20,12,8,0) 28%, rgba(20,12,8,0) 54%, rgba(20,12,8,.55) 100%),
+      url('images/lux/hero-mobile.webp') center / cover no-repeat,
+      #14110C !important;
+  }
+  .hero-grid{position:absolute;inset:0;min-height:0;padding:24px 16px 22px;display:flex}
+  .hero-copy{display:flex;flex-direction:column;width:100%;max-width:none;height:100%;text-align:center}
+  .hero h1{margin-top:10px;line-height:1.04;color:#fff}
+  .hero .sub{margin:auto auto 0;font-size:.86rem;line-height:1.3;max-width:34ch;color:rgba(255,255,255,.92)}
+  .hero-cta{flex-direction:row;justify-content:center;gap:10px;margin-top:12px}
+  .hero-cta .btn{flex:1 1 0;min-width:0;padding:13px 6px;font-size:.74rem;letter-spacing:.03em;white-space:nowrap}
+  .hero-rate{justify-content:center;margin-top:10px;color:#fff}
+  .hero-rate b{color:#fff}
+  .hero-rate small{color:rgba(255,255,255,.82)}
+  .hero-banner{display:none !important}
+}
+@media(max-width:780px){
+  .family{padding-top:46px;padding-bottom:46px}
+  .stats .wrap{padding:34px 0}
+  .quiz .wrap{padding:42px 0}
+}
+.story-badge .sm-short{display:none}
+/* ===== MOBILE refinements (Page C) ===== */
+@media(max-width:680px){
+  /* Reorder: move quiz below "The Formula" (#science) */
+  body{display:flex;flex-direction:column}
+  #quiz{order:1}
+  #story{order:2}
+  #results{order:3}
+  .compare{order:4}
+  .reviews{order:5}
+  #faq{order:6}
+  #capture{order:7}
+  .final{order:8}
+  footer{order:9}
+  /* Top eyebrow pill: keep to one line */
+  .eyebrow{white-space:nowrap;font-size:.6rem;letter-spacing:.04em;padding:8px 14px;gap:.4rem;align-self:center;justify-content:center;text-align:center}
+  /* Quiz: 3 per row, remainder centered (max 2 rows) */
+  .q-opts,.q-pane[data-step="1"] .q-opts{display:flex !important;flex-wrap:wrap;justify-content:center;gap:9px}
+  .q-opts button{flex:0 0 calc(33.333% - 6px);padding:14px 5px;font-size:.78rem}
+  .q-opts button .qe{font-size:1.35rem}
+  /* Active/free-from/included pills: max 2 rows */
+  .actives li,.freefrom li{font-size:.72rem;padding:5px 9px}
+  .includes li{font-size:.63rem;padding:3px 7px;letter-spacing:0}
+  .includes ul{gap:5px}
+  /* Ingredient cards: one per row */
+  .ingredients{grid-template-columns:1fr !important}
+  /* Secure checkout: label on its own centered line, badges one centered row below */
+  .pays{justify-content:center;flex-wrap:wrap;gap:5px}
+  .pay.lock{flex:0 0 100%;text-align:center;margin-bottom:4px}
+  .pay{font-size:.52rem;padding:3px 5px}
+  /* Footer secure checkout: title centered, badges in two centered rows */
+  footer .pays{justify-content:center !important}
+  footer .pays .pay:not(.lock){flex:0 0 calc(25% - 5px);text-align:center}
+  /* 2015 story badge: compact, flag beside year, single-row caption */
+  .story-badge{min-height:0;padding:20px 18px}
+  .story-badge .flag{display:none}
+  .story-badge .yr{font-size:clamp(2.2rem,10vw,3rem);display:inline-flex;align-items:center;justify-content:center;gap:.26em}
+  .story-badge .yr::before{content:"🇨🇴";font-size:.58em;line-height:1}
+  .story-badge .yl{font-size:.68rem;margin-top:6px}
+  .story-badge .sm{font-size:.82rem;margin-top:8px;white-space:nowrap}
+  .story-badge .sm-full{display:none}
+  .story-badge .sm-short{display:inline}
+  /* "7 days" results float: translucent so the photo shows through */
+  .results-photo .float{background:rgba(20,17,12,.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+  /* Trim dead space between comparison table and reviews */
+  .compare{padding-bottom:26px}
+  .reviews{padding-top:30px}
+}
 </style>
 </head>
 <body>
@@ -841,7 +915,7 @@ footer{background:#0C0A06;color:var(--taupe);padding:58px 0 34px;font-family:'Ha
       <div class="flag">🇨🇴</div>
       <div class="yr">2015</div>
       <div class="yl">Born in Cali, Colombia</div>
-      <div class="sm">From one ancestral ritual to Colombia's&nbsp;#1 hair-care brand.</div>
+      <div class="sm"><span class="sm-full">From one ancestral ritual to Colombia's&nbsp;#1 hair-care brand.</span><span class="sm-short">Colombia's #1 hair-care brand.</span></div>
     </div>
     <div class="story-copy">
       <p class="kicker">Our story</p>
@@ -889,7 +963,7 @@ footer{background:#0C0A06;color:var(--taupe);padding:58px 0 34px;font-family:'Ha
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="sec" style="background:#1a1610">
+<section class="sec reviews" style="background:#1a1610">
   <div class="wrap">
     <div class="sec-head"><p class="kicker">★★★★★ 12,000+ reviews</p><h2>You're not alone. <em>Look at this hair.</em></h2></div>
     <div class="testi-grid">
