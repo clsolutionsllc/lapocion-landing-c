@@ -1,3 +1,6 @@
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Original PNGs kept locally as backup (WebP served)
+images/lux/_png-orig/
